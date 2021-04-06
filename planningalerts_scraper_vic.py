@@ -1,7 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
 import concurrent.futures
-import pandas as pd
 import csv
 
 authorities = ['brimbank',
@@ -77,8 +76,6 @@ with concurrent.futures.ThreadPoolExecutor() as executor:
     urls = [f'https://www.planningalerts.org.au/authorities/{authority}/applications?page=1' for authority in authorities]
     for url in urls:
         executor.submit(getData, url)
-
-
 
 csv_file.close()
 
